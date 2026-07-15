@@ -11,7 +11,7 @@
 
   body {
     font-family: 'Montserrat', sans-serif;
-    background: #0a0f1e;
+    background: #0D172D;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -133,21 +133,21 @@
 .countdown-wrap {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 .countdown-item {
     background: #d4af37;
     color: #0a1f44;
     border-radius: 8px;
-    padding: 12px 8px;
+    padding: 10px 6px;
     width: 22%;
-    min-width: 70px;
+    min-width: 65px;
     box-shadow: 0 4px 10px rgba(212,175,55,0.3);
   }
 .countdown-item.number {
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 900;
     display: block;
     line-height: 1;
@@ -167,34 +167,46 @@
 .btn { display: inline-block; background: #22c55e; color: #fff; padding: 14px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; width: 50%; margin: 10px 0; border: none; cursor: pointer; }
 .btn-maps { background: #d4af37; color: #0a1f44; }
 
+  /* TABLET */
   @media (min-width: 768px) {
     body { padding: 40px; }
 .invite { max-width: 650px; padding: 50px 40px; }
 .couple-first { font-size: 56px; }
 .couple-last { font-size: 40px; }
-.countdown-item.number { font-size: 36px; }
+.countdown-item.number { font-size: 30px; }
+.countdown-item.label { font-size: 11px; }
   }
 
+  /* DESKTOP */
   @media (min-width: 1024px) {
     body { padding: 60px; }
 .invite { max-width: 850px; padding: 60px 60px; }
 .couple-first { font-size: 68px; }
 .couple-last { font-size: 48px; }
-.countdown-item.number { font-size: 42px; }
+.countdown-item.number { font-size: 36px; }
+.countdown-item.label { font-size: 12px; }
   }
 
-  @media (max-width: 360px) {
+  /* SMALL PHONES */
+  @media (max-width: 480px) {
 .invite { padding: 30px 18px; }
 .couple-first { font-size: 36px; }
 .couple-last { font-size: 26px; }
-.countdown-item { width: 45%; }
-.countdown-item.number { font-size: 24px; }
+.countdown-item { width: 23%; min-width: 55px; padding: 8px 4px; }
+.countdown-item.number { font-size: 18px; }
+.countdown-item.label { font-size: 9px; letter-spacing: 0; }
   }
 </style>
 </head>
 <body>
 
-  
+  <div class="bg-slideshow">
+    <img src="IMG/1.jpeg" class="active">
+    <img src="IMG/2.jpg"><img src="IMG/3.jpg"><img src="IMG/4.jpg"><img src="IMG/5.jpg">
+    <img src="IMG/6.jpg"><img src="IMG/7.jpg"><img src="IMG/8.jpg"><img src="IMG/9.jpg">
+    <img src="IMG/10.jpg"><img src="IMG/11.jpg"><img src="IMG/12.jpg"><img src="IMG/13.jpg">
+    <img src="IMG/14.jpg"><img src="IMG/15.jpg">
+  </div>
 
   <div class="hearts-container" id="hearts"></div>
 
@@ -219,7 +231,7 @@
     <div class="couple-last">
       OFFEI <span class="couple-amp">&</span> ADU
     </div>
-    <P class="invite-text" >#JonaBrig</P>
+    <p class="invite-text" >#JonaBrig</p>
     <p class="wedding-text">IN WEDDING CELEBRATION</p>
     <p class="wedding-text">ON</p>
     <p class="month">AUGUST</p>
@@ -230,25 +242,24 @@
     <div class="countdown">
       <h4>COUNTDOWN TO THE BIG DAY</h4>
       <div class="countdown-wrap">
-        <div class="countdown-item"><span class="number" id="days">00</span><span class="label">Days</span></div>
-        <div class="countdown-item"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
-        <div class="countdown-item"><span class="number" id="minutes">00</span><span class="label">Minutes</span></div>
-        <div class="countdown-item"><span class="number" id="seconds">00</span><span class="label">Seconds</span></div>
+        <div class="countdown-item"><span class="number" id="days">00</span><span class="label">D</span></div>
+        <div class="countdown-item"><span class="number" id="hours">00</span><span class="label">H</span></div>
+        <div class="countdown-item"><span class="number" id="minutes">00</span><span class="label">M</span></div>
+        <div class="countdown-item"><span class="number" id="seconds">00</span><span class="label">S</span></div>
       </div>
     </div>
-    
+
     <div class="venue">
       MAFA Event Centre Abuakwa <br>
       Opposite Tweneboah Kodua School
     </div>
-
 
     <a class="btn btn-maps" id="mapsLink" target="_blank">📍 Get Directions</a>
 
     <div class="rsvp">
       <p class="label">RSVP</p>
       <p class="numbers">024 481 4026 / 054 251 3484</p>
-      
+
       <br>
       <p class="invite-text">Designed with love by DIT 0241572782<br>
        © 2026 Jonathan & Brigina Wedding. All rights reserved.</p>
@@ -262,6 +273,7 @@
     const hoursEl = document.getElementById("hours");
     const minutesEl = document.getElementById("minutes");
     const secondsEl = document.getElementById("seconds");
+
     function updateCountdown() {
       const distance = weddingStart - new Date().getTime();
       if(distance > 0){
