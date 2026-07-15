@@ -7,326 +7,417 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap');
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
   body {
     font-family: 'Montserrat', sans-serif;
     background: #0D172D;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-y: auto;
+    color: #fff;
+    overflow-x: hidden;
   }
 
-.bg-slideshow {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-  }
-.bg-slideshow img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 3s ease-in-out;
-    filter: brightness(0.35);
-    animation: zoom 20s infinite;
-  }
-.bg-slideshow img.active { opacity: 1; }
-  @keyframes zoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
-  }
+.hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; }
+.heart { position: absolute; font-size: 20px; color: rgba(212,175,55,0.6); animation: floatUp linear infinite; }
+  @keyframes floatUp { 0% { transform: translateY(100vh) scale(0.5); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
 
-.hearts-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-  }
-.heart {
-    position: absolute;
-    font-size: 20px;
-    color: rgba(212,175,55,0.6);
-    animation: floatUp linear infinite;
-  }
-  @keyframes floatUp {
-    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-  }
+.music-btn { position: fixed; bottom: 20px; right: 20px; background: #d4af37; color: #0a1f44; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 22px; cursor: pointer; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-.music-btn {
-    position: fixed; bottom: 20px; right: 20px;
-    background: #d4af37; color: #0a1f44; border: none;
-    border-radius: 50%; width: 50px; height: 50px;
-    font-size: 22px; cursor: pointer; z-index: 10;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  }
+.section { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
 
 .invite {
     background: linear-gradient(transparent, transparent), url('IMG/card-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    max-width: 420px;
-    width: 100%;
-    border-radius: 20px;
-    padding: 40px 25px;
-    text-align: center;
-    border: 3px solid #d4af37;
-    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
-    position: relative;
-    backdrop-filter: transparent(4px);
-    margin: 20px 0;
+    background-size: cover; background-position: center;
+    color: #fff; max-width: 420px; width: 100%;
+    border-radius: 20px; padding: 40px 25px; text-align: center;
+    border: 3px solid #d4af37; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4); position: relative;
   }
-.invite::before,.invite::after {
-    content: "❋"; position: absolute; font-size: 50px; color: #d4af37; opacity: 0.6;
-  }
-.invite::before { top: 10px; left: 10px; }
-.invite::after { bottom: 10px; right: 10px; transform: rotate(180deg); }
+.invite::before,.invite::after { content: "❋"; position: absolute; font-size: 50px; color: #d4af37; opacity: 0.6; }
+.invite::before { top: 10px; left: 10px; }.invite::after { bottom: 10px; right: 10px; transform: rotate(180deg); }
 
 .families { font-size: 11px; letter-spacing: 2px; color: #d4af37; margin-bottom: 8px; font-weight: 600; }
 .family-names { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; line-height: 1.6; margin-bottom: 15px; }
 .family-names.amp { color: #d4af37; font-size: 18px; padding: 0 6px; }
 .invite-text { font-size: 12px; letter-spacing: 1.5px; margin-bottom: 20px; color: #d4af37; }
-
-/* NAMES LIKE FLYER */
 .couple-first { font-family: 'Great Vibes', cursive; font-size: 44px; line-height: 1.2; margin: 10px 0 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 .couple-last { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; letter-spacing: 3px; margin-bottom: 15px; }
 .couple-amp { color: #d4af37; padding: 0 10px; }
-
 .wedding-text { font-size: 12px; letter-spacing: 2px; margin: 15px 0 5px; }
 .month { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; margin: 10px 0; }
-.date-box {
-  background: linear-gradient(90deg, #d4af37, #f4e4a6, #d4af37);
-  color: #0a1f44;
-  padding: 6px 12px;
-  margin: 12px auto;
-  font-weight: 700;
-  font-size: 13px;
-  display: inline-block;
-  border-radius: 2px;
-  letter-spacing: 1px;
-}
+.date-box { background: linear-gradient(90deg, #d4af37, #f4e4a6, #d4af37); color: #0a1f44; padding: 6px 12px; margin: 12px auto; font-weight: 700; font-size: 13px; display: inline-block; border-radius: 2px; letter-spacing: 1px; text-decoration: none; }
 .year { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 20px; }
 .venue { font-size: 14px; line-height: 1.6; margin: 20px 0; }
 
-.countdown { margin: 25px 0; }
-.countdown h4 {
-    font-size: 14px;
-    color: #d4af37;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
-    font-weight: 600;
-  }
+  /* COUNTDOWN LIKE JOABAE */
 .countdown-wrap {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     flex-wrap: wrap;
+    margin: 25px 0;
   }
-.countdown-item {
-    background: #d4af37;
+.countdown-box {
+    background: linear-gradient(180deg, #d4af37 0%, #f4e4a6 50%, #d4af37 100%);
     color: #0a1f44;
-    border-radius: 8px;
-    padding: 10px 6px;
-    width: 22%;
-    min-width: 65px;
-    box-shadow: 0 4px 10px rgba(212,175,55,0.3);
+    border-radius: 12px;
+    padding: 15px 10px;
+    width: 80px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+    border: 2px solid #f4e4a6;
   }
-.countdown-item.number {
+.countdown-number {
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 900;
     display: block;
     line-height: 1;
   }
-.countdown-item.label {
-    font-size: 10px;
+.countdown-label {
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-top: 4px;
+    letter-spacing: 2px;
+    margin-top: 6px;
     text-transform: uppercase;
+  }
+.countdown-finished {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    color: #d4af37;
+    margin: 25px 0;
   }
 
 .rsvp { margin-top: 25px; }
 .rsvp.label { font-family: 'Great Vibes', cursive; font-size: 24px; color: #d4af37; }
 .rsvp.numbers { font-size: 14px; font-weight: 600; margin-top: 5px; }
+.numbers { text-decoration: none; color: #fff; }
+.btn { display: inline-block; background: #d4af37; color: #0a1f44; padding: 14px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; margin: 10px 5px; border: none; cursor: pointer; }
 
-.btn { display: inline-block; background: #22c55e; color: #fff; padding: 14px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; width: 50%; margin: 10px 0; border: none; cursor: pointer; }
-.btn-maps { background: #d4af37; color: #0a1f44; }
+  /* GALLERY SECTION LIKE JOABAE */
+.gallery-section { background: #0D172D; flex-direction: column; }
+.gallery-title { font-family: 'Great Vibes', cursive; font-size: 48px; color: #d4af37; margin-bottom: 10px; }
+.gallery-subtitle { color: #d4af37; letter-spacing: 2px; margin-bottom: 30px; }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 900px;
+  }
+.gallery-card {
+    position: relative; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden;
+    background: rgba(212,175,55,0.1); border: 2px dashed #d4af37; cursor: pointer;
+  }
+.gallery-card img { width: 100%; height: 100%; object-fit: cover; display: none; }
+.upload-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 13px; color: #d4af37; text-align: center; pointer-events: none; }
+.gallery-card input[type="file"] { display: none; }
+.gallery-msg { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); color: #fff; font-size: 12px; padding: 8px; display: none; }
 
-  /* TABLET */
+ /* Enhanced Gallery Section with Flip Cards */
+ .gallery {
+            background: linear-gradient(135deg, var(--cream) 0%, #f0e9d8 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 550px;
+            perspective: 1000px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #fff;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            background:#d4af37 ;
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .flip-card-back h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        .flip-card-back p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+  /* LIGHTBOX SLIDER LIKE JOABAE */
+.lightbox {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center;
+  }
+.lightbox-content { position: relative; max-width: 90%; max-height: 80%; text-align: center; }
+.lightbox-content img { max-width: 100%; max-height: 70vh; border-radius: 10px; border: 3px solid #d4af37; }
+.lightbox-msg { color: #fff; margin-top: 15px; font-size: 16px; background: rgba(212,175,55,0.15); padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+.close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
+.prev,.next {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(212,175,55,0.8); color: #0a1f44; border: none;
+    font-size: 30px; padding: 10px 15px; cursor: pointer; border-radius: 50%;
+  }
+.prev { left: 20px; }.next { right: 20px; }
+
   @media (min-width: 768px) {
-    body { padding: 40px; }
-.invite { max-width: 650px; padding: 50px 40px; }
-.couple-first { font-size: 56px; }
-.couple-last { font-size: 40px; }
-.countdown-item.number { font-size: 30px; }
-.countdown-item.label { font-size: 11px; }
+  .invite { max-width: 650px; }
+  .couple-first { font-size: 56px; }
+  .couple-last { font-size: 40px; }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .countdown-box { width: 100px; padding: 20px 12px; }
+  .countdown-number { font-size: 40px; }
   }
-
-  /* DESKTOP */
   @media (min-width: 1024px) {
-    body { padding: 60px; }
-.invite { max-width: 850px; padding: 60px 60px; }
-.couple-first { font-size: 68px; }
-.couple-last { font-size: 48px; }
-.countdown-item.number { font-size: 36px; }
-.countdown-item.label { font-size: 12px; }
-  }
-
-  /* SMALL PHONES */
-  @media (max-width: 480px) {
-.invite { padding: 30px 18px; }
-.couple-first { font-size: 36px; }
-.couple-last { font-size: 26px; }
-.countdown-item { width: 23%; min-width: 55px; padding: 8px 4px; }
-.countdown-item.number { font-size: 18px; }
-.countdown-item.label { font-size: 9px; letter-spacing: 0; }
+  .invite { max-width: 850px; }
+  .couple-first { font-size: 68px; }
+  .couple-last { font-size: 48px; }
+  .gallery-grid { grid-template-columns: repeat(5, 1fr); }
+  .countdown-box { width: 110px; }
+  .countdown-number { font-size: 48px; }
   }
 </style>
 </head>
 <body>
 
-  <div class="bg-slideshow">
-    <img src="IMG/1.jpeg" class="active">
-    <img src="IMG/2.jpg"><img src="IMG/3.jpg"><img src="IMG/4.jpg"><img src="IMG/5.jpg">
-    <img src="IMG/6.jpg"><img src="IMG/7.jpg"><img src="IMG/8.jpg"><img src="IMG/9.jpg">
-    <img src="IMG/10.jpg"><img src="IMG/11.jpg"><img src="IMG/12.jpg"><img src="IMG/13.jpg">
-    <img src="IMG/14.jpg"><img src="IMG/15.jpg">
-  </div>
+<div class="hearts-container" id="hearts"></div>
+<audio id="bgMusic" loop autoplay muted playsinline><source src="music/joe.mp3" type="audio/mpeg"></audio>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🔇</button>
 
-  <div class="hearts-container" id="hearts"></div>
-
-  <audio id="bgMusic" loop autoplay muted playsinline>
-    <source src="music/joe.mp3" type="audio/mpeg">
-  </audio>
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🔇</button>
-
+<!-- INVITE SECTION -->
+<div class="section">
   <div class="invite">
     <p class="families">THE FAMILIES OF</p>
     <div class="family-names">
       I. F. Nyarko <span class="amp">&</span> Philip Adu <br>
       Grace Nyamekye <span class="amp">&</span> Elizabeth Adu
     </div>
-
     <p class="invite-text">INVITE YOU TO JOIN THEIR <br> SON AND DAUGHTER</p>
-
-    <!-- EXACTLY LIKE FLYER -->
-    <div class="couple-first">
-      Jonathan <span class="couple-amp">&</span> Brigina
-    </div>
-    <div class="couple-last">
-      OFFEI <span class="couple-amp">&</span> ADU
-    </div>
-    <p class="invite-text" >#JonaBrig</p>
+    <div class="couple-first">Jonathan <span class="couple-amp">&</span> Brigina</div>
+    <div class="couple-last">OFFEI <span class="couple-amp">&</span> ADU</div>
+    <p class="invite-text">#JonaBrig</p>
     <p class="wedding-text">IN WEDDING CELEBRATION</p>
     <p class="wedding-text">ON</p>
     <p class="month">AUGUST</p>
-
     <div class="date-box">SATURDAY 1 AT 1:00 PM</div>
     <p class="year">2026</p>
 
-    <div class="countdown">
-      <h4>COUNTDOWN TO THE BIG DAY</h4>
+    <!-- COUNTDOWN JOABAE STYLE -->
+    <div id="countdown">
       <div class="countdown-wrap">
-        <div class="countdown-item"><span class="number" id="days">00</span><span class="label">D</span></div>
-        <div class="countdown-item"><span class="number" id="hours">00</span><span class="label">H</span></div>
-        <div class="countdown-item"><span class="number" id="minutes">00</span><span class="label">M</span></div>
-        <div class="countdown-item"><span class="number" id="seconds">00</span><span class="label">S</span></div>
+        <div class="countdown-box"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-box"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
       </div>
     </div>
 
-    <div class="venue">
-      MAFA Event Centre Abuakwa <br>
-      Opposite Tweneboah Kodua School
-    </div>
-
-    <a class="btn btn-maps" id="mapsLink" target="_blank">📍 Get Directions</a>
-
+    <div class="venue">MAFA Event Centre Abuakwa <br> Opposite Tweneboah Kodua School</div>
+    <a class="date-box" id="mapsLink" target="_blank">📍 Get Directions</a>
+    <br>
+    <a href="#galleryPage" class="date-box">📸 Our Gallery</a>
     <div class="rsvp">
       <p class="label">RSVP</p>
-      <p class="numbers">024 481 4026 / 054 251 3484</p>
-
+      <p class="numbers"><a href="tel:0244814026" class="numbers">024 481 4026</a> / <a href="tel:0542513484" class="numbers">054 251 3484</a></p>
       <br>
-      <p class="invite-text">Designed with love by DIT 0241572782<br>
-       © 2026 Jonathan & Brigina Wedding. All rights reserved.</p>
+      <p class="invite-text">Designed with love by DIT <a href="tel:0241572782" class="numbers">0241572782</a><br>© 2026 Jonathan & Brigina Wedding</p>
     </div>
   </div>
+</div>
+
+<!-- GALLERY SECTION - BLANK PAGE -->
+<section class="gallery" id="gallery">
+        <div class="section gallery-section" id="galleryPage">
+  <h2 class="gallery-title">Our Gallery</h2>
+              <div class="gallery-grid">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="IMG/4.jpeg" alt="Engagement photo">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Our Friendship</h3>
+                            <p>The sun warmed our faces as the camera flashed, capturing a moment of pure happiness though shy. Standing hand in hand, supporting each other.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="IMG/1.png" alt="Beach sunset">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Convention</h3>
+                            <p>Our first convention together reminded us of the big dreams about our future together. So sunny and beautiful, we enjoyed every second of our bonding. This picture has been our favorite since.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="IMG/3.jpeg" alt="Winter romance">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>CODED</h3>
+                            <p>Why won’t there be bright smile after coding and decoding this, “Look! You are beautiful, my dear one, and delightful…” 
+Spending moments like this where we could share stories and make plans for our life together brighten our hearts and draw us closer and closer, Jehovah is with us.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="IMG/2.jpeg" alt="Mountain adventure">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>ADVENTURE</h3>
+                            <p>We have been on many adventures together, and this one was no exception. We explored new places, tried new things, and made memories that will last a lifetime. This picture captures the excitement and joy of our journey together.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="IMG/5.jpeg" alt="City lights">
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>INVITE</h3>
+                            <p>Our wedding invitation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">&times;</span>
+  <button class="prev" onclick="changeSlide(-1)">❮</button>
+  <div class="lightbox-content">
+    <img id="lightboxImg">
+    <div class="lightbox-msg" id="lightboxMsg" onclick="editMessage()">Tap to add message</div>
+  </div>
+  <button class="next" onclick="changeSlide(1)">❯</button>
+</div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const weddingStart = new Date("2026-08-01T13:00:00").getTime();
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
+let currentSlide = 0;
+let galleryData = [{src:'',msg:''},{src:'',msg:''},{src:'',msg:''},{src:'',msg:''},{src:'',msg:''}];
 
-    function updateCountdown() {
-      const distance = weddingStart - new Date().getTime();
-      if(distance > 0){
-        daysEl.innerHTML = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-        hoursEl.innerHTML = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-        minutesEl.innerHTML = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-        secondsEl.innerHTML = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-      } else {
-        document.querySelector('.countdown h4').innerHTML = "THE WEDDING HAS BEGUN";
-      }
+document.addEventListener('DOMContentLoaded', function() {
+  // COUNTDOWN LIKE JOABAE
+  const weddingStart = new Date("2026-08-01T13:00:00").getTime();
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingStart - now;
+    const countdownEl = document.getElementById("countdown");
+
+    if(distance > 0){
+      document.getElementById("days").innerHTML = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById("hours").innerHTML = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      document.getElementById("minutes").innerHTML = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      document.getElementById("seconds").innerHTML = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+    } else {
+      countdownEl.innerHTML = `<div class="countdown-finished">The Wedding Has Begun! ❤️</div>`;
     }
-    updateCountdown(); setInterval(updateCountdown, 1000);
+  }
+  updateCountdown(); setInterval(updateCountdown, 1000);
 
-    const music = document.getElementById('bgMusic');
-    music.volume = 0.25;
-    let musicPlaying = true;
-    music.play().catch(() => { musicPlaying = false; document.getElementById('musicBtn').innerHTML = "🔇"; });
-    document.body.addEventListener('click', function unmuteOnce(){
-      music.muted = false;
-      music.play();
-      document.getElementById('musicBtn').innerHTML = "🔊";
-      document.body.removeEventListener('click', unmuteOnce);
-    });
-    window.toggleMusic = () => {
-      if(musicPlaying) { music.pause(); document.getElementById('musicBtn').innerHTML = "🔇"; }
-      else { music.muted = false; music.play(); document.getElementById('musicBtn').innerHTML = "🔊"; }
-      musicPlaying =!musicPlaying;
-    }
+  // Music
+  const music = document.getElementById('bgMusic'); music.volume = 0.25; let musicPlaying = true;
+  music.play().catch(() => { musicPlaying = false; });
+  document.body.addEventListener('click', function unmuteOnce(){ music.muted = false; music.play(); document.getElementById('musicBtn').innerHTML = "🔊"; document.body.removeEventListener('click', unmuteOnce); });
+  window.toggleMusic = () => { if(musicPlaying) { music.pause(); document.getElementById('musicBtn').innerHTML = "🔇"; } else { music.muted = false; music.play(); document.getElementById('musicBtn').innerHTML = "🔊"; } musicPlaying =!musicPlaying; }
 
-    const bgSlides = document.querySelectorAll('.bg-slideshow img');
-    let currentBg = 0;
-    setInterval(() => {
-      bgSlides[currentBg].classList.remove('active');
-      currentBg = (currentBg + 1) % bgSlides.length;
-      bgSlides[currentBg].classList.add('active');
-    }, 20000);
+  // Hearts
+  const heartsContainer = document.getElementById('hearts'); const emojis = ['❤️', '💛', '💍', 'Love', '💐', '✨','J & B','#JonaBrig'];
+  function createHeart() { const heart = document.createElement('div'); heart.classList.add('heart'); heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]; heart.style.left = Math.random() * 100 + 'vw'; heart.style.fontSize = (Math.random() * 15 + 15) + 'px'; heart.style.animationDuration = (Math.random() * 5 + 8) + 's'; heartsContainer.appendChild(heart); setTimeout(() => heart.remove(), 13000); }
+  setInterval(createHeart, 400);
 
-    const heartsContainer = document.getElementById('hearts');
-    const emojis = ['❤️', '💛', '💍', 'Love', '💐', '✨','J & B','#JonaBrig'];
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
-      heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
-      heartsContainer.appendChild(heart);
-      setTimeout(() => heart.remove(), 13000);
-    }
-    setInterval(createHeart, 400);
+  document.getElementById("mapsLink").href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("MAFA Event Centre, Abuakwa, Ghana")}`;
+});
 
-    document.getElementById("mapsLink").href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("MAFA Event Centre, Abuakwa, Ghana")}`;
-  });
+// GALLERY FUNCTIONS
+window.loadImage = (event, index) => {
+  const file = event.target.files[0]; if(!file) return;
+  const img = document.getElementById('img' + (index+1));
+  const label = img.parentElement.querySelector('.upload-label');
+  img.src = URL.createObjectURL(file); img.style.display = 'block'; label.style.display = 'none';
+  galleryData[index].src = img.src;
+  setTimeout(() => {
+    const message = prompt("Add a message for this picture:");
+    if(message){ galleryData[index].msg = message; document.getElementById('msg' + (index+1)).innerText = message; document.getElementById('msg' + (index+1)).style.display = 'block'; }
+  }, 300);
+}
+
+window.openLightbox = (index, e) => {
+  e.stopPropagation(); if(!galleryData[index].src) return;
+  currentSlide = index; updateLightbox(); document.getElementById('lightbox').style.display = 'flex';
+}
+window.closeLightbox = () => { document.getElementById('lightbox').style.display = 'none'; }
+window.changeSlide = (dir) => {
+  do { currentSlide = (currentSlide + dir + 5) % 5; } while(!galleryData[currentSlide].src);
+  updateLightbox();
+}
+function updateLightbox() {
+  document.getElementById('lightboxImg').src = galleryData[currentSlide].src;
+  document.getElementById('lightboxMsg').innerText = galleryData[currentSlide].msg || "Tap to add message";
+}
+window.editMessage = () => {
+  const newMsg = prompt("Edit message:", galleryData[currentSlide].msg);
+  if(newMsg!== null){
+    galleryData[currentSlide].msg = newMsg;
+    document.getElementById('msg' + (currentSlide+1)).innerText = newMsg;
+    document.getElementById('msg' + (currentSlide+1)).style.display = newMsg? 'block' : 'none';
+    updateLightbox();
+  }
+}
 </script>
 </body>
 </html>
