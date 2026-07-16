@@ -6,230 +6,88 @@
 <title>J&B Wedding</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap');
-
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: #0D172D;
-    color: #fff;
-    overflow-x: hidden;
-  }
-
-.hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; }
-.heart { position: absolute; font-size: 20px; color: rgba(212,175,55,0.6); animation: floatUp linear infinite; }
+  body { font-family: 'Montserrat', sans-serif; background: #0D172D; color: #fff; overflow-x: hidden; }
+ .hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; }
+ .heart { position: absolute; font-size: 20px; color: rgba(212,175,55,0.6); animation: floatUp linear infinite; }
   @keyframes floatUp { 0% { transform: translateY(100vh) scale(0.5); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
+ .music-btn { position: fixed; bottom: 20px; right: 20px; background: #d4af37; color: #0a1f44; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 22px; cursor: pointer; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+ .section { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+ .invite { background: linear-gradient(transparent, transparent), url('IMG/card-bg.jpg'); background-size: cover; background-position: center; color: #fff; max-width: 420px; width: 100%; border-radius: 20px; padding: 40px 25px; text-align: center; border: 3px solid #d4af37; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4); position: relative; }
+ .invite::before,.invite::after { content: "❋"; position: absolute; font-size: 50px; color: #d4af37; opacity: 0.6; }
+ .invite::before { top: 10px; left: 10px; }.invite::after { bottom: 10px; right: 10px; transform: rotate(180deg); }
+ .families { font-size: 11px; letter-spacing: 2px; color: #d4af37; margin-bottom: 8px; font-weight: 600; }
+ .family-names { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; line-height: 1.6; margin-bottom: 15px; }
+ .family-names.amp { color: #d4af37; font-size: 18px; padding: 0 6px; }
+ .invite-text { font-size: 12px; letter-spacing: 1.5px; margin-bottom: 20px; color: #d4af37; }
+ .couple-first { font-family: 'Great Vibes', cursive; font-size: 44px; line-height: 1.2; margin: 10px 0 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); white-space: nowrap; }
+ .couple-last { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; letter-spacing: 3px; margin-bottom: 15px; white-space: nowrap; }
+ .couple-amp { color: #d4af37; padding: 0 10px; }
+ .wedding-text { font-size: 12px; letter-spacing: 2px; margin: 15px 0 5px; }
+ .month { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; margin: 10px 0; }
+ .date-box { background: linear-gradient(90deg, #d4af37, #f4e4a6, #d4af37); color: #0a1f44; padding: 6px 12px; margin: 12px auto; font-weight: 700; font-size: 13px; display: inline-block; border-radius: 2px; letter-spacing: 1px; text-decoration: none; }
+ .year { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+ .venue { font-size: 14px; line-height: 1.6; margin: 20px 0; }
 
-.music-btn { position: fixed; bottom: 20px; right: 20px; background: #d4af37; color: #0a1f44; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 22px; cursor: pointer; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+  /* COUNTDOWN FIXED TO 1 LINE */
+ .countdown-wrap { display: flex; justify-content: center; gap: 8px; flex-wrap: nowrap; margin: 25px 0; }
+ .countdown-box { background: linear-gradient(180deg, #d4af37 0%, #f4e4a6 50%, #d4af37 100%); color: #0a1f44; border-radius: 12px; padding: 12px 6px; width: 70px; text-align: center; box-shadow: 0 6px 20px rgba(212,175,55,0.4); border: 2px solid #f4e4a6; flex-shrink: 0; }
+ .countdown-number { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; display: block; line-height: 1; }
+ .countdown-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-top: 4px; text-transform: uppercase; }
+ .countdown-finished { font-family: 'Great Vibes', cursive; font-size: 28px; color: #d4af37; margin: 25px 0; }
 
-.section { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+ .rsvp { margin-top: 25px; }
+ .rsvp.label { font-family: 'Great Vibes', cursive; font-size: 24px; color: #d4af37; }
+ .rsvp.numbers { font-size: 14px; font-weight: 600; margin-top: 5px; }
+ .numbers { text-decoration: none; color: #fff; }
+ .btn { display: inline-block; background: #d4af37; color: #0a1f44; padding: 14px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; margin: 10px 5px; border: none; cursor: pointer; }
 
-.invite {
-    background: linear-gradient(transparent, transparent), url('IMG/card-bg.jpg');
-    background-size: cover; background-position: center;
-    color: #fff; max-width: 420px; width: 100%;
-    border-radius: 20px; padding: 40px 25px; text-align: center;
-    border: 3px solid #d4af37; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4); position: relative;
-  }
-.invite::before,.invite::after { content: "❋"; position: absolute; font-size: 50px; color: #d4af37; opacity: 0.6; }
-.invite::before { top: 10px; left: 10px; }.invite::after { bottom: 10px; right: 10px; transform: rotate(180deg); }
+ .gallery-section { background: #0D172D; flex-direction: column; }
+ .gallery-title { font-family: 'Great Vibes', cursive; font-size: 48px; color: #d4af37; margin-bottom: 10px; }
+ .gallery-subtitle { color: #d4af37; letter-spacing: 2px; margin-bottom: 30px; }
+ .gallery { background: linear-gradient(135deg, var(--cream) 0%, #f0e9d8 100%); }
+ .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+ .flip-card { background-color: transparent; width: 100%; height: 550px; perspective: 1000px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+ .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+ .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+ .flip-card-front,.flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 15px; overflow: hidden; }
+ .flip-card-front { background-color: #fff; }
+ .flip-card-front img { width: 100%; height: 100%; object-fit: cover; }
+ .flip-card-back { background:#d4af37 ; color: white; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; }
+ .flip-card-back h3 { font-size: 1.8rem; margin-bottom: 15px; }
+ .flip-card-back p { font-size: 1.1rem; line-height: 1.6; }
+ .our-story { font-family: 'mulish', cursive; font-size: 20px;  }
 
-.families { font-size: 11px; letter-spacing: 2px; color: #d4af37; margin-bottom: 8px; font-weight: 600; }
-.family-names { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; line-height: 1.6; margin-bottom: 15px; }
-.family-names.amp { color: #d4af37; font-size: 18px; padding: 0 6px; }
-.invite-text { font-size: 12px; letter-spacing: 1.5px; margin-bottom: 20px; color: #d4af37; }
-.couple-first { font-family: 'Great Vibes', cursive; font-size: 44px; line-height: 1.2; margin: 10px 0 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-.couple-last { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; letter-spacing: 3px; margin-bottom: 15px; }
-.couple-amp { color: #d4af37; padding: 0 10px; }
-.wedding-text { font-size: 12px; letter-spacing: 2px; margin: 15px 0 5px; }
-.month { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; margin: 10px 0; }
-.date-box { background: linear-gradient(90deg, #d4af37, #f4e4a6, #d4af37); color: #0a1f44; padding: 6px 12px; margin: 12px auto; font-weight: 700; font-size: 13px; display: inline-block; border-radius: 2px; letter-spacing: 1px; text-decoration: none; }
-.year { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 20px; }
-.venue { font-size: 14px; line-height: 1.6; margin: 20px 0; }
-
-  /* COUNTDOWN LIKE JOABAE */
-.countdown-wrap {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin: 25px 0;
-  }
-.countdown-box {
-    background: linear-gradient(180deg, #d4af37 0%, #f4e4a6 50%, #d4af37 100%);
-    color: #0a1f44;
-    border-radius: 12px;
-    padding: 15px 10px;
-    width: 80px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
-    border: 2px solid #f4e4a6;
-  }
-.countdown-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 900;
-    display: block;
-    line-height: 1;
-  }
-.countdown-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-.countdown-finished {
-    font-family: 'Great Vibes', cursive;
-    font-size: 28px;
-    color: #d4af37;
-    margin: 25px 0;
-  }
-
-.rsvp { margin-top: 25px; }
-.rsvp.label { font-family: 'Great Vibes', cursive; font-size: 24px; color: #d4af37; }
-.rsvp.numbers { font-size: 14px; font-weight: 600; margin-top: 5px; }
-.numbers { text-decoration: none; color: #fff; }
-.btn { display: inline-block; background: #d4af37; color: #0a1f44; padding: 14px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; margin: 10px 5px; border: none; cursor: pointer; }
-
-  /* GALLERY SECTION LIKE JOABAE */
-.gallery-section { background: #0D172D; flex-direction: column; }
-.gallery-title { font-family: 'Great Vibes', cursive; font-size: 48px; color: #d4af37; margin-bottom: 10px; }
-.gallery-subtitle { color: #d4af37; letter-spacing: 2px; margin-bottom: 30px; }
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    width: 100%;
-    max-width: 900px;
-  }
-.gallery-card {
-    position: relative; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden;
-    background: rgba(212,175,55,0.1); border: 2px dashed #d4af37; cursor: pointer;
-  }
-.gallery-card img { width: 100%; height: 100%; object-fit: cover; display: none; }
-.upload-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 13px; color: #d4af37; text-align: center; pointer-events: none; }
-.gallery-card input[type="file"] { display: none; }
-.gallery-msg { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); color: #fff; font-size: 12px; padding: 8px; display: none; }
-
- /* Enhanced Gallery Section with Flip Cards */
- .gallery {
-            background: linear-gradient(135deg, var(--cream) 0%, #f0e9d8 100%);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .flip-card {
-            background-color: transparent;
-            width: 100%;
-            height: 550px;
-            perspective: 1000px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .flip-card-front {
-            background-color: #fff;
-        }
-
-        .flip-card-front img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .flip-card-back {
-            background:#d4af37 ;
-            color: white;
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-        }
-
-        .flip-card-back h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--gold);
-        }
-
-        .flip-card-back p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-  /* LIGHTBOX SLIDER LIKE JOABAE */
-.lightbox {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center;
-  }
-.lightbox-content { position: relative; max-width: 90%; max-height: 80%; text-align: center; }
-.lightbox-content img { max-width: 100%; max-height: 70vh; border-radius: 10px; border: 3px solid #d4af37; }
-.lightbox-msg { color: #fff; margin-top: 15px; font-size: 16px; background: rgba(212,175,55,0.15); padding: 10px 20px; border-radius: 8px; cursor: pointer; }
-.close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
-.prev,.next {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(212,175,55,0.8); color: #0a1f44; border: none;
-    font-size: 30px; padding: 10px 15px; cursor: pointer; border-radius: 50%;
-  }
-.prev { left: 20px; }.next { right: 20px; }
-
-  @media (min-width: 768px) {
-  .invite { max-width: 650px; }
-  .couple-first { font-size: 56px; }
-  .couple-last { font-size: 40px; }
-  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-  .countdown-box { width: 100px; padding: 20px 12px; }
-  .countdown-number { font-size: 40px; }
+ @media (min-width: 768px) {
+ .invite { max-width: 650px; }
+ .couple-first { font-size: 56px; }
+ .couple-last { font-size: 40px; letter-spacing: 4px; }
+ .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+ .countdown-box { width: 90px; padding: 18px 10px; }
+ .countdown-number { font-size: 36px; }
+ .countdown-label { font-size: 11px; letter-spacing: 2px; }
   }
   @media (min-width: 1024px) {
-  .invite { max-width: 850px; }
-  .couple-first { font-size: 68px; }
-  .couple-last { font-size: 48px; }
-  .gallery-grid { grid-template-columns: repeat(5, 1fr); }
-  .countdown-box { width: 110px; }
-  .countdown-number { font-size: 48px; }
+ .invite { max-width: 850px; }
+ .couple-first { font-size:68px; }
+ .couple-last { font-size: 48px; letter-spacing: 5px; }
+ .gallery-grid { grid-template-columns: repeat(5, 1fr); }
+ .countdown-box { width: 100px; padding: 20px 12px; }
+ .countdown-number { font-size: 44px; }
+  }
+  @media (max-width: 380px) {
+  .couple-first { font-size: 38px; white-space: normal; }
+  .couple-last { font-size: 28px; white-space: normal; }
+  .countdown-box { width: 65px; padding: 10px 4px; }
+  .countdown-number { font-size: 24px; }
   }
 </style>
 </head>
 <body>
-
 <div class="hearts-container" id="hearts"></div>
 <audio id="bgMusic" loop autoplay muted playsinline><source src="music/joe.mp3" type="audio/mpeg"></audio>
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🔇</button>
 
-<!-- INVITE SECTION -->
 <div class="section">
   <div class="invite">
     <p class="families">THE FAMILIES OF</p>
@@ -240,14 +98,12 @@
     <p class="invite-text">INVITE YOU TO JOIN THEIR <br> SON AND DAUGHTER</p>
     <div class="couple-first">Jonathan <span class="couple-amp">&</span> Brigina</div>
     <div class="couple-last">OFFEI <span class="couple-amp">&</span> ADU</div>
-    <p class="invite-text">#JonaBrig</p>
+    <p class="invite-text">#JoGina</p>
     <p class="wedding-text">IN WEDDING CELEBRATION</p>
     <p class="wedding-text">ON</p>
     <p class="month">AUGUST</p>
     <div class="date-box">SATURDAY 1 AT 1:00 PM</div>
     <p class="year">2026</p>
-
-    <!-- COUNTDOWN JOABAE STYLE -->
     <div id="countdown">
       <div class="countdown-wrap">
         <div class="countdown-box"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
@@ -256,11 +112,10 @@
         <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
       </div>
     </div>
-
     <div class="venue">MAFA Event Centre Abuakwa <br> Opposite Tweneboah Kodua School</div>
     <a class="date-box" id="mapsLink" target="_blank">📍 Get Directions</a>
     <br>
-    <a href="#galleryPage" class="date-box">📸 Our Gallery</a>
+    <a href="#gallery" class="date-box">📸 Our Gallery</a>
     <div class="rsvp">
       <p class="label">RSVP</p>
       <p class="numbers"><a href="tel:0244814026" class="numbers">024 481 4026</a> / <a href="tel:0542513484" class="numbers">054 251 3484</a></p>
@@ -270,154 +125,70 @@
   </div>
 </div>
 
-<!-- GALLERY SECTION - BLANK PAGE -->
 <section class="gallery" id="gallery">
         <div class="container">
   <h2 class="gallery-title">Our Gallery</h2>
               <div class="gallery-grid">
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="IMG/4.jpeg" alt="Engagement photo">
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Our Friendship</h3>
-                            <p>The sun warmed our faces as the camera flashed, capturing a moment of pure happiness though shy. Standing hand in hand, supporting each other.</p>
-                        </div>
+                        <div class="flip-card-front"><img src="IMG/4.jpeg" alt="Engagement photo"></div>
+                        <div class="flip-card-back"><h3>Our Friendship</h3><p class="our-story">The sun warmed our faces as the camera flashed, capturing a moment of pure happiness though shy. Standing hand in hand, supporting each other.</p></div>
                     </div>
                 </div>
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="IMG/1.png" alt="Beach sunset">
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Convention</h3>
-                            <p>Our first convention together reminded us of the big dreams about our future together. So sunny and beautiful, we enjoyed every second of our bonding. This picture has been our favorite since.</p>
-                        </div>
+                        <div class="flip-card-front"><img src="IMG/1.png" alt="Beach sunset"></div>
+                        <div class="flip-card-back"><h3>Convention</h3><p class="our-story">Our first convention together reminded us of the big dreams about our future together. So sunny and beautiful, we enjoyed every second of our bonding. This picture has been our favorite since.</p></div>
                     </div>
                 </div>
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="IMG/3.jpeg" alt="Winter romance">
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>CODED</h3>
-                            <p>Why won’t there be bright smile after coding and decoding this, “Look! You are beautiful, my dear one, and delightful…” 
-Spending moments like this where we could share stories and make plans for our life together brighten our hearts and draw us closer and closer, Jehovah is with us.</p>
-                        </div>
+                        <div class="flip-card-front"><img src="IMG/3.jpeg" alt="Winter romance"></div>
+                        <div class="flip-card-back"><h3>CODED</h3><p class="our-story">Why won’t there be bright smile after coding and decoding this, “Look! You are beautiful, my dear one, and delightful…” 
+Spending moments like this where we could share stories and make plans for our life together brighten our hearts and draw us closer and closer, Jehovah is with us.</p></div>
                     </div>
                 </div>
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="IMG/2.jpeg" alt="Mountain adventure">
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>ADVENTURE</h3>
-                            <p>We have been on many adventures together, and this one was no exception. We explored new places, tried new things, and made memories that will last a lifetime. This picture captures the excitement and joy of our journey together.</p>
-                        </div>
+                        <div class="flip-card-front"><img src="IMG/2.jpeg" alt="Mountain adventure"></div>
+                        <div class="flip-card-back"><h3>ADVENTURE</h3><p class="our-story">We have been on many adventures together, and this one was no exception. We explored new places, tried new things, and made memories that will last a lifetime. This picture captures the excitement and joy of our journey together.</p></div>
                     </div>
                 </div>
                 <div class="flip-card">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="IMG/5.jpeg" alt="City lights">
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>INVITE</h3>
-                            <p>Our wedding invitation</p>
-                        </div>
+                        <div class="flip-card-front"><img src="IMG/5.jpeg" alt="City lights"></div>
+                        <div class="flip-card-back"><h3>WE INVITE YOU</h3><p class="our-story">Our wedding invitation</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <span class="close-btn" onclick="closeLightbox()">&times;</span>
-  <button class="prev" onclick="changeSlide(-1)">❮</button>
-  <div class="lightbox-content">
-    <img id="lightboxImg">
-    <div class="lightbox-msg" id="lightboxMsg" onclick="editMessage()">Tap to add message</div>
-  </div>
-  <button class="next" onclick="changeSlide(1)">❯</button>
-</div>
-
 <script>
 let currentSlide = 0;
 let galleryData = [{src:'',msg:''},{src:'',msg:''},{src:'',msg:''},{src:'',msg:''},{src:'',msg:''}];
-
 document.addEventListener('DOMContentLoaded', function() {
-  // COUNTDOWN LIKE JOABAE
   const weddingStart = new Date("2026-08-01T13:00:00").getTime();
   function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = weddingStart - now;
+    const distance = weddingStart - new Date().getTime();
     const countdownEl = document.getElementById("countdown");
-
     if(distance > 0){
       document.getElementById("days").innerHTML = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
       document.getElementById("hours").innerHTML = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
       document.getElementById("minutes").innerHTML = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
       document.getElementById("seconds").innerHTML = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-    } else {
-      countdownEl.innerHTML = `<div class="countdown-finished">The Wedding Has Begun! ❤️</div>`;
-    }
+    } else { countdownEl.innerHTML = `<div class="countdown-finished">The Wedding Has Begun! ❤️</div>`; }
   }
   updateCountdown(); setInterval(updateCountdown, 1000);
-
-  // Music
   const music = document.getElementById('bgMusic'); music.volume = 0.25; let musicPlaying = true;
   music.play().catch(() => { musicPlaying = false; });
   document.body.addEventListener('click', function unmuteOnce(){ music.muted = false; music.play(); document.getElementById('musicBtn').innerHTML = "🔊"; document.body.removeEventListener('click', unmuteOnce); });
   window.toggleMusic = () => { if(musicPlaying) { music.pause(); document.getElementById('musicBtn').innerHTML = "🔇"; } else { music.muted = false; music.play(); document.getElementById('musicBtn').innerHTML = "🔊"; } musicPlaying =!musicPlaying; }
-
-  // Hearts
   const heartsContainer = document.getElementById('hearts'); const emojis = ['❤️', '💛', '💍', 'Love', '💐', '✨','J & B','#JonaBrig'];
   function createHeart() { const heart = document.createElement('div'); heart.classList.add('heart'); heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]; heart.style.left = Math.random() * 100 + 'vw'; heart.style.fontSize = (Math.random() * 15 + 15) + 'px'; heart.style.animationDuration = (Math.random() * 5 + 8) + 's'; heartsContainer.appendChild(heart); setTimeout(() => heart.remove(), 13000); }
   setInterval(createHeart, 400);
-
   document.getElementById("mapsLink").href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("MAFA Event Centre, Abuakwa, Ghana")}`;
 });
-
-// GALLERY FUNCTIONS
-window.loadImage = (event, index) => {
-  const file = event.target.files[0]; if(!file) return;
-  const img = document.getElementById('img' + (index+1));
-  const label = img.parentElement.querySelector('.upload-label');
-  img.src = URL.createObjectURL(file); img.style.display = 'block'; label.style.display = 'none';
-  galleryData[index].src = img.src;
-  setTimeout(() => {
-    const message = prompt("Add a message for this picture:");
-    if(message){ galleryData[index].msg = message; document.getElementById('msg' + (index+1)).innerText = message; document.getElementById('msg' + (index+1)).style.display = 'block'; }
-  }, 300);
-}
-
-window.openLightbox = (index, e) => {
-  e.stopPropagation(); if(!galleryData[index].src) return;
-  currentSlide = index; updateLightbox(); document.getElementById('lightbox').style.display = 'flex';
-}
-window.closeLightbox = () => { document.getElementById('lightbox').style.display = 'none'; }
-window.changeSlide = (dir) => {
-  do { currentSlide = (currentSlide + dir + 5) % 5; } while(!galleryData[currentSlide].src);
-  updateLightbox();
-}
-function updateLightbox() {
-  document.getElementById('lightboxImg').src = galleryData[currentSlide].src;
-  document.getElementById('lightboxMsg').innerText = galleryData[currentSlide].msg || "Tap to add message";
-}
-window.editMessage = () => {
-  const newMsg = prompt("Edit message:", galleryData[currentSlide].msg);
-  if(newMsg!== null){
-    galleryData[currentSlide].msg = newMsg;
-    document.getElementById('msg' + (currentSlide+1)).innerText = newMsg;
-    document.getElementById('msg' + (currentSlide+1)).style.display = newMsg? 'block' : 'none';
-    updateLightbox();
-  }
-}
 </script>
 </body>
 </html>
