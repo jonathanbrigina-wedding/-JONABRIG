@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
   music.play().catch(() => { musicPlaying = false; });
   document.body.addEventListener('click', function unmuteOnce(){ music.muted = false; music.play(); document.getElementById('musicBtn').innerHTML = "🔊"; document.body.removeEventListener('click', unmuteOnce); });
   window.toggleMusic = () => { if(musicPlaying) { music.pause(); document.getElementById('musicBtn').innerHTML = "🔇"; } else { music.muted = false; music.play(); document.getElementById('musicBtn').innerHTML = "🔊"; } musicPlaying =!musicPlaying; }
-  const heartsContainer = document.getElementById('hearts'); const emojis = ['❤️', '💛', '💍', 'Love', '💐', '✨','J & B','#JonaBrig'];
+  const heartsContainer = document.getElementById('hearts'); const emojis = ['❤️', '💛', '💍', 'Love', '💐', '✨','J & B','#JoGina'];
   function createHeart() { const heart = document.createElement('div'); heart.classList.add('heart'); heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]; heart.style.left = Math.random() * 100 + 'vw'; heart.style.fontSize = (Math.random() * 15 + 15) + 'px'; heart.style.animationDuration = (Math.random() * 5 + 8) + 's'; heartsContainer.appendChild(heart); setTimeout(() => heart.remove(), 13000); }
   setInterval(createHeart, 400);
   document.getElementById("mapsLink").href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("MAFA Event Centre, Abuakwa, Ghana")}`;
